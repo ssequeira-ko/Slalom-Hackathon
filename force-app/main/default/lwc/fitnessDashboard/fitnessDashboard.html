@@ -1,0 +1,19 @@
+<template>
+  <template if:true={errorMessage}><div class="error" role="alert">{errorMessage}</div></template>
+  <template if:true={data}>
+    <main class="shell">
+      <header class="hero"><div><p class="eyebrow">FITNESS SALES TEAM</p><h1>Welcome back, {data.memberName}</h1><p>Your momentum, your team, your next milestone.</p></div><div class="points"><span>{data.points}</span><small>POINTS</small></div></header>
+      <section class="cards">
+        <article class="card sales"><p class="label">YOUR SALES THIS MONTH</p><strong>{salesFormatted}</strong><p>Keep building your momentum</p></article>
+        <article class="card goal"><div class="row"><p class="label">MONTHLY SALES GOAL</p><span>{data.goalPercent}%</span></div><strong>{goalFormatted}</strong><div class="track"><div class="fill" style={progressStyle}></div></div><p>{goalCaption}</p></article>
+        <article class="card award"><p class="label">NEXT MILESTONE</p><strong>{nextAwardLabel}</strong><p>{nextAwardCaption}</p><div class="track gold"><div class="fill" style={pointsProgressStyle}></div></div></article>
+      </section>
+      <section class="team card"><div class="sectionHead"><div><p class="label">YOUR CREW</p><h2>Team performance</h2></div><span class="pill">{teamCount} members</span></div>
+        <template if:true={hasTeam}><div class="table"><div class="tableHead"><span>MEMBER</span><span>SALES THIS MONTH</span><span>POINTS</span></div><template for:each={data.team} for:item="row"><div class="tableRow" key={row.name}><strong>{row.name}</strong><span>{row.salesFormatted}</span><span>{row.points}</span></div></template></div></template>
+        <template if:false={hasTeam}><p class="empty">Your team activity will show here as your crew grows.</p></template>
+      </section>
+      <section class="awards card"><p class="label">RECENT WINS</p><div class="badges"><template for:each={data.newAwards} for:item="award"><span class="badge" key={award}>✦ {award}</span></template><template if:false={hasAwards}><span class="empty">Your next achievement is waiting.</span></template></div></section>
+    </main>
+    <template if:true={justWon}><div class="winOverlay"><div class="winBox"><span class="spark">✦</span><p class="eyebrow">MILESTONE UNLOCKED</p><h2>You Win!</h2><p>That sale moved you closer to your next big goal.</p><button onclick={dismissWin}>Let’s go</button></div></div></template>
+  </template>
+</template>

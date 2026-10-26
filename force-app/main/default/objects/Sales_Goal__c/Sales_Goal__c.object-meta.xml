@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata"><deploymentStatus>Deployed</deploymentStatus><label>Sales Goal</label><nameField><label>Sales Goal Name</label><type>AutoNumber</type><displayFormat>SA-{00000}</displayFormat></nameField><pluralLabel>Sales Goals</pluralLabel><sharingModel>ControlledByParent</sharingModel></CustomObject>
